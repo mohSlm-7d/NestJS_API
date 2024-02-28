@@ -3,7 +3,7 @@ import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/commo
 import { EmployeesService } from './employees.service';
 import { Prisma, USER_ROLE } from '@prisma/client';
 
-@Controller('employees')
+@Controller('employees/')
 export class EmployeesController {
   constructor(private readonly employeesService: EmployeesService) {}
 
