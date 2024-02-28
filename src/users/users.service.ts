@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { encryptText } from 'src/utils/bcrypt';
-import { CreateUserDto } from '../dto/create-user.dto';
-import { UpdateUserDto } from 'src/dto/update-user.dto';
+import { CreateUserDto } from './dto/create-user.dto';
+import { UpdateUserDto } from 'src/users/dto/update-user.dto';
 import { NotFoundException, BadRequestException } from '@nestjs/common';
 
 @Injectable()

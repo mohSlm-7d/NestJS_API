@@ -6,8 +6,8 @@ import { Body, Controller,
      } from '@nestjs/common';
 import { UsersService } from './users.service';
 // import { response } from 'express';
-import { CreateUserDto } from 'src/dto/create-user.dto';
-import { UpdateUserDto } from '../dto/update-user.dto';
+import { CreateUserDto } from 'src/users/dto/create-user.dto';
+import { UpdateUserDto } from './dto/update-user.dto';
 
 @Controller('/user/')
 export class UsersController {
@@ -15,7 +15,15 @@ export class UsersController {
 
     @Get("generate/otp")
     generateOTP(@Query('name') name: string): string{
-        return this.userService.generateOTP(name);
+        try{
+            return this.userService.generateOTP(name);
+        }catch(error){
+            console.log(`ERROR: `, error.message);
+            return JSON.stringify({
+                status: 500,
+                mssg: error.message,
+        });
+        }
     }
 
     @Post("generate/otp/:name")
